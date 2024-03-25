@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  emotion-detection:
+    container_name: newanalysis
+    image: sanuthmandepa/newanalysis
+    ports:
+      - "5000:5000"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./DeploySpeechML:/app/DeploySpeechML
+      - ./emotion_detection_model.joblib:/app/emotion_detection_model.joblib
+      - ./label_encoder.joblib:/app/label_encoder.joblib
